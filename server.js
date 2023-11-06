@@ -35,8 +35,8 @@ app.get('/lights', (req, res) => {
 })
 
 https.createServer({
-    key: fs.readFileSync('/ssl/server.crt'),
-    cert: fs.readFileSync('/ssl/server.key')
+    key: fs.readFileSync('/ssl/server.key'),
+    cert: fs.readFileSync('/ssl/server.crt')
   }, app).listen(port, () => {
     console.log('Running on port ' + port);
   });
