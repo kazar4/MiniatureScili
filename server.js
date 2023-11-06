@@ -5,7 +5,7 @@ var fs = require('fs')
 const app = express()
 const port = 5672
 
-var allowedOrigins = ['https://kazar4.com', 'https://kazar4.com', 'http://kazar4.com', 'http://kazar4.com']
+var allowedOrigins = ['https://kazar4.com', 'http://kazar4.com']
 app.use(cors({
     origin: function (origin, callback){
         if (!origin) return callback(null, true);
