@@ -23,6 +23,11 @@ app.use(cors({
 let colorToSend = "RED"
 
 // sets color for LEDs to check
+app.get('/', (req, res) => {
+  res.send("Hi!")
+})
+
+// sets color for LEDs to check
 app.get('/lights/:color', (req, res) => {
   res.send(req.params["color"])
   console.log(req.params["color"])
