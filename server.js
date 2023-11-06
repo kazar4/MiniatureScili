@@ -24,7 +24,7 @@ let colorToSend = "RED"
 
 // sets color for LEDs to check
 app.get('/', (req, res) => {
-  res.send("Hi!")
+  res.send("<h1>Hi!</h1>")
 })
 
 // sets color for LEDs to check
