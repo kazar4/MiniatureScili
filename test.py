@@ -13,6 +13,7 @@ while True:
     toSend = ""
     try:
         toSend = requests.get('https://kazar4.com:5672/lights/', verify=False).text
+        toSend = toSend.upper()
     except:
         continue
     print("Trying To Send: " + str(toSend))
