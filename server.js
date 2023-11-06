@@ -1,9 +1,11 @@
 const express = require('express')
 var cors = require('cors');
+var https = require('https')
+var fs = require('fs')
 const app = express()
 const port = 5672
 
-var allowedOrigins = ['http://kazar4.com:5500', 'http://kazar4.com', 'http://127.0.0.1:5500', 'http://127.0.0.1.com']
+var allowedOrigins = ['https://kazar4.com', 'https://kazar4.com', 'http://kazar4.com', 'http://kazar4.com']
 app.use(cors({
     origin: function (origin, callback){
         if (!origin) return callback(null, true);
@@ -32,6 +34,9 @@ app.get('/lights', (req, res) => {
     res.send(colorToSend)
 })
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+https.createServer({
+    key: fs.readFileSync('/ssl/server.cty'),
+    cert: fs.readFileSync('/ssl/server.key')
+  }, app).listen(port, () => {
+    console.log('Running on port ' + port);
+  });
