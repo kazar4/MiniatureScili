@@ -25,3 +25,66 @@ function buttonClicked(buttonName) {
     }
 }
 
+
+
+document.addEventListener("keypress", function(event) {
+    if (event.code == "KeyW") {
+        console.log('U');
+        webSocket.send("U");
+    }
+    if (event.code == "KeyD") {
+        console.log('R');
+        webSocket.send("R");
+    }
+    if (event.code == "KeyS") {
+        console.log('D');
+        webSocket.send("D");
+    }
+    if (event.code == "KeyA") {
+        console.log('L');
+        webSocket.send("L");
+    }
+});
+
+let upDown = false;
+let rightDown = false;
+let downDown = false;
+let leftDown = false;
+
+document.addEventListener("keydown", function(event) {
+    if (event.code == "ArrowUp") {
+        console.log('U');
+        webSocket.send("U");
+    }
+    if (event.code == "ArrowRight") {
+        console.log('R');
+        webSocket.send("R");
+    }
+    if (event.code == "ArrowDown") {
+        console.log('D');
+        webSocket.send("D");
+    }
+    if (event.code == "ArrowLeft") {
+        console.log('L');
+        webSocket.send("L");
+    }
+});
+
+// document.addEventListener("keyup", function(event) {
+//     if (upDown && event.code == "ArrowUp") {
+//         console.log('U');
+//         upDown = false;
+//     }
+//     if (rightDown && event.code == "ArrowRight") {
+//         console.log('R');
+//         upDown = false;
+//     }
+//     if (downDown && event.code == "ArrowDown") {
+//         console.log('D');
+//         downDown = false;
+//     }
+//     if (leftDown && event.code == "ArrowLeft") {
+//         console.log('L');
+//         leftDown = false;
+//     }
+// });
