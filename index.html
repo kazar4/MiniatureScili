@@ -1,5 +1,10 @@
-<!DOCTYPE html>
+<!-- https://codepen.io/antoniasymeonidou/pen/yLPVmZd -->
 
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html>
     <head>
         <meta charset="utf-8">
@@ -7,18 +12,18 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
+        <link rel="stylesheet" href="index.css">
     </head>
     <body>
-     
-        <button onclick="sendClick('RED')">RED</button>
-        <button onclick="sendClick('BLUE')">BLUE</button>
-        <button onclick="sendClick('GREEN')">GREEN</button>
-        <button onclick="sendClick('PURPLE')">PURPLE</button>
-        <button onclick="sendClick('ON')">ON</button>
-        <button onclick="sendClick('OFF')">OFF</button>
+        <div class="pane">
+            <h1 class="title">Miniature Scili</h1>
+            <ol>
+                <li><a href="controller.html" class="arrow"><i class="fas fa-arrow-alt-right"></i>Snake</a></li>
+                <li><a class="arrow"><i class="fas fa-arrow-alt-right"></i>Cool Graphics™️</a></li>
+              </ol>
+        </div>
+          
         
-        <script src="" async defer></script>
-        <script src="client.js"></script>
+        <script src="index.js" async defer></script>
     </body>
 </html>
