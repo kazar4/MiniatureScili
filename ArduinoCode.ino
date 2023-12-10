@@ -5,8 +5,8 @@
 #include <WebSocketClient.h>
 #include <ESP8266HTTPClient.h>
 
-const char* ssid     = "RLAB";
-const char* password = "metropolis";
+const char* ssid     = "Brown-Guest";
+const char* password = "";
 char path[] = "/";
 char host[] = "kazar4.com";
   
@@ -17,6 +17,7 @@ WiFiClientSecure client;
 
 void setup() {
   Serial.begin(9600);
+  Serial1.begin(9600); // Initialize TX/RX communication (do not need to wait)
   delay(10);
 
   // We start by connecting to a WiFi network
@@ -79,12 +80,16 @@ void loop() {
     if (data.length() > 0) {
       Serial.print("Received data: ");
       Serial.println(data);
+      Serial.println("Sending data to Arduino Lights");
+
+      Serial1.println(data); // Sending data to Arduino
     }
     
     // capture the value of analog 1, send it along
     // pinMode(1, INPUT);
     // data = String(analogRead(1));
-    webSocketClient.sendData("POGGGG");
+    webSocketClient.sendData("POG");
+    
     
   } else {
     Serial.println("Client disconnected.");
