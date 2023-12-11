@@ -2,6 +2,14 @@
 let webSocket = new WebSocket("wss://kazar4.com:9001");
 webSocket.addEventListener("open", (event) => {
     webSocket.send("player1");
+
+    if (window.location.pathname.includes("controller")) {
+        webSocket.send("SNAKE")
+    }
+
+    // if (window.location.pathname.includes("controller")) {
+    //     webSocket.send("SNAKE")
+    // }
 });
 
 function buttonClicked(buttonName) {
