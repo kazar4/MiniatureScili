@@ -4,13 +4,28 @@ webSocket.addEventListener("open", (event) => {
     webSocket.send("player1");
 
     if (window.location.pathname.includes("controller")) {
-        webSocket.send("SNAKE")
-    }
-
-    if (window.location.pathname.includes("graphics")) {
-        webSocket.send("GRAPHICS")
+        webSocket.send("S")
+    } else if (window.location.pathname.includes("graphics")) {
+        webSocket.send("G")
+    } else {
+        webSocket.send("F")
     }
 });
+
+webSocket.addEventListener("open", (event) => {
+    
+    let msg = event.data;
+    if (length(Array.from(msg)) != 0 && Array.from(msg)[0] == "S") {
+        scoreSpan = document.getElementById("scoreVal")
+        scoreSpan.innerHTML = msg.substring(1, length(Array.from(msg)) - 1)
+    }
+
+});
+
+//https://stackoverflow.com/questions/38956121/how-to-add-delay-to-promise-inside-then
+function sleeper(ms) {
+    return new Promise(resolve => setTimeout(() => resolve(), ms));
+  }
 
 function buttonClicked(buttonName) {
 
@@ -29,7 +44,17 @@ function buttonClicked(buttonName) {
     } else if (buttonName === "RAINBOW") {
         webSocket.send("RAINBOW");
     } else if (buttonName === "SCORE") {
-        webSocket.send("SCORE");
+        webSocket.sen1d("SCORE");
+    } else if (buttonName === "OFF") {
+        webSocket.send("F");
+    } else if (buttonName === "RESTART") {
+        webSocket.send("F");
+        webSocket.send("S");
+        // sleeper(2000).then(() => {
+        //     //webSocket.send("SNAKE")
+        // })
+    } else if (buttonName === "CB") {
+        webSocket.send("CB")
     }
 }
 
