@@ -42,7 +42,7 @@ function buttonClicked(buttonName) {
     } else if (buttonName === "PONG") {
         webSocket.send("PONG");
     } else if (buttonName === "RAINBOW") {
-        webSocket.send("RAINBOW");
+        webSocket.send("RN");
     } else if (buttonName === "SCORE") {
         webSocket.sen1d("SCORE");
     } else if (buttonName === "OFF") {
@@ -55,6 +55,10 @@ function buttonClicked(buttonName) {
         // })
     } else if (buttonName === "CB") {
         webSocket.send("CB")
+    } else if (buttonName === "CONFETTI") {
+        webSocket.send("CF")
+    } else if (buttonName === "ALL") {
+        webSocket.send("G")
     }
 }
 
