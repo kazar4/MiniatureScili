@@ -7,9 +7,9 @@ webSocket.addEventListener("open", (event) => {
         webSocket.send("SNAKE")
     }
 
-    // if (window.location.pathname.includes("controller")) {
-    //     webSocket.send("SNAKE")
-    // }
+    if (window.location.pathname.includes("graphics")) {
+        webSocket.send("GRAPHICS")
+    }
 });
 
 function buttonClicked(buttonName) {
