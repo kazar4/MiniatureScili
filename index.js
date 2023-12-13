@@ -59,6 +59,8 @@ function buttonClicked(buttonName) {
         webSocket.send("CF")
     } else if (buttonName === "ALL") {
         webSocket.send("G")
+    } else if (buttonName === "WDT") {
+        webSocket.send("WDT")
     }
 }
 
