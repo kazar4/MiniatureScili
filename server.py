@@ -43,10 +43,12 @@ def message_received(client, server, message):
     if message == "ESP":
         print("Setting client " + str(client["id"]) + " to ESP")
         espClient = (client, client["id"])
+        server.send_message(espClient[0], "ESP Connected")
         return
     if message == "player1":
         print("Setting client " + str(client["id"]) + " to player1")
         player1 = (client, client["id"])
+        server.send_message(player1[0], "player1 Connected")
         return
 
     # TODOS
