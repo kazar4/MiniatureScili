@@ -13,6 +13,8 @@ class TestStringMethods(unittest.TestCase):
 
         ws.send("player1")
         ws2.send("ESP")
+        ws.recv()
+        ws2.recv()
 
         time.sleep(1)
 
@@ -30,13 +32,22 @@ class TestStringMethods(unittest.TestCase):
 
         ws.send("ESP")
 
-        time.sleep(1)
-
         result = ws.recv()
 
         ws.close()
 
         self.assertEqual(result, 'ESP Connected')
+    
+    def testPlayer1(self):
+        ws = create_connection("wss://www.kazar4.com:9001", sslopt = {"cert_reqs": ssl.CERT_NONE})
+
+        ws.send("player1")
+
+        result = ws.recv()
+
+        ws.close()
+
+        self.assertEqual(result, 'player1 Connected')
 
     # def setESP():
     #     ws = create_connection("wss://www.kazar4.com:9001", sslopt = {"cert_reqs": ssl.CERT_NONE})

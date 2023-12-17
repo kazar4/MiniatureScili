@@ -59,8 +59,13 @@ def message_received(client, server, message):
     # sends a message to ESP "ping + ID"
     # then itll send back "pong + ID" and send back pong to that ID
 
+    possibleCommands = ["U", "D", "L", "R", "Graphics", "SNAKE", "Ping", "Rainbow", "Glitter", "F", "S", "G", "WDT", "CB"]
     # only run back and forth if esp and player1 are connected
-    if player1 != None and espClient != None:
+    if player1 != None and espClient != None and message:
+        if message not in possibleCommands:
+            server.send_message(client, "invalid command")
+            return
+
         if client["id"] == espClient[1]:
             print("esp -> player: " + message)
             server.send_message(player1[0], message)
