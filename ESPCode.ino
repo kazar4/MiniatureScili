@@ -5,8 +5,9 @@
 #include <WebSocketClient.h>
 #include <ESP8266HTTPClient.h>
 
-const char* ssid     = "Brown-Guest";
-const char* password = "";
+//Brown-Guest
+const char* ssid     = "Verizon_HF9J74";
+const char* password = "treat6-omit-fro";
 char path[] = "/";
 char host[] = "kazar4.com";
   
@@ -17,6 +18,7 @@ WiFiClientSecure client;
 
 void setup() {
   Serial.begin(9600);
+  while (!Serial);
   Serial1.begin(9600); // Initialize TX/RX communication (do not need to wait)
   delay(10);
 
@@ -28,6 +30,8 @@ void setup() {
   Serial.println(ssid);
   
   WiFi.begin(ssid, password);
+
+  // Serial.println(WiFi.macAddress());
   
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
@@ -78,17 +82,29 @@ void loop() {
     
     webSocketClient.getData(data);
     if (data.length() > 0) {
-      Serial.print("Received data: ");
-      Serial.println(data);
-      Serial.println("Sending data to Arduino Lights");
+      //Serial.print("Received data: ");
+      //Serial.println(data);
+      //Serial.println("Sending data to Arduino Lights");
 
-      Serial1.println(data); // Sending data to Arduino
+      Serial.print("<");
+      Serial.print(data);
+      Serial.print(">");
+
+      //Serial1.write("GOT SOMETHING"); // Sending data to Arduino
+    }
+
+    if (Serial1.available() > 0) {
+      Serial.println(Serial1.readString());
+      // Serial1.readStringUntil('<');
+      // String message = Serial1.readStringUntil('>');
+      // Serial.println(message);
+      // webSocketClient.sendData(message);
     }
     
     // capture the value of analog 1, send it along
     // pinMode(1, INPUT);
     // data = String(analogRead(1));
-    webSocketClient.sendData("POG");
+    // webSocketClient.sendData("POG");
     
     
   } else {
